@@ -12,7 +12,7 @@ local localPort = 0;
 local success, socket = pcall(createConnection, localIp, localPort)
 
 -- Generate OSC message
-local success, result = pcall(osc.generateOsc, {"i"}, "/test", "1.0");
+local success, result = pcall(osc.generateOsc, {}, "/test", 1.0);
 
 -- Send OSC message
 local remoteIp = "127.0.0.1";

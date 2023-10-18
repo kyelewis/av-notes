@@ -1,20 +1,17 @@
 -- Create OSC Driver Instance
 local addInstance = pixc.getRoot().Utils.Driver.addInstance;
 local isStreaming = false;
-local oscDropLimit = 0;
-local oscLogEveryDropped = 10;
-local success, osc = pcall(addInstance, isStreaming, "osc", oscDropLimit, oscLogEveryDropped);
+local success, osc = pcall(addInstance, isStreaming, "osc");
 
 -- Create Network Socket
 local createConnection = pixc.getRoot().Utils.Network.UDP.createConnection;
-local localIp = "127.0.0.1";
-local localPort = 0;
-local success, socket = pcall(createConnection, localIp, localPort)
+local success, socket = pcall(createConnection)
 
 -- Generate OSC message
-local success, result = pcall(osc.generateOsc, {}, "/test", 1.0);
+local success, result = pcall(osc.generateOsc, {}, "/test", 1);
 
 -- Send OSC message
 local remoteIp = "127.0.0.1";
-local remotePort = 59999;
+local remotePort = 8000;
 local success = pcall(socket.send, result, remoteIp, remotePort);
+

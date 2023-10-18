@@ -1,3 +1,6 @@
+# Send OSC Message using Driver Directly
+
+```lua
 -- Create OSC Driver Instance
 local addInstance = pixc.getRoot().Utils.Driver.addInstance;
 local isStreaming = false;
@@ -14,4 +17,4 @@ local success, result = pcall(osc.generateOsc, {}, "/test", 1);
 local remoteIp = "127.0.0.1";
 local remotePort = 8000;
 local success = pcall(socket.send, result, remoteIp, remotePort);
-
+```
